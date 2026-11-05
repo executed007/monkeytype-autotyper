@@ -14,7 +14,7 @@ Reads the active word on the page, types it, hits space, moves on. Toggle button
 **Method 2:** Install manually from the repo.
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/).
-2. Open the Tampermonkey dashboard, click "Create a new script," paste the contents of `monkeytype-auto-typer.user.js`, save.
+2. Open the Tampermonkey dashboard, click "Create a new script," paste the contents of `monkeytype-autotyper.js`, save.
 3. Open Monkeytype, click the test area once so the caret shows up, then click the yellow toggle in the bottom right to start.
 
 The script starts typing the moment you toggle it on. There's no countdown, so make sure the test is ready before you click it.
