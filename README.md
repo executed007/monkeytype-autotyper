@@ -16,3 +16,52 @@ So this does the opposite. Hold times and gaps come from a Gaussian distribution
 To measure it, set `ERROR_RATE = 0`, `CALIBRATION = 1.0`, and `TARGET_WPM = 100`, run a 60 second test, then set `CALIBRATION = 100 / rawWPM`. From what I've tried, shorter tests like 15 and 30 seconds give less accurate results.
 
 Calibration only fixes timing. Accuracy is separate, and it matters more than you'd think. Monkeytype's WPM number is based on correct words, so a word with a wrong letter doesn't count toward it even if most of the word was right. A few percent of errors costs you noticeably more than a few percent of your score.
+## The 162 wall and how to get past it
+
+Out of the box the script tops out around 162 WPM. That's not some hard limit, it's just what the default values happen to produce. There's a `Math.max` clamp on hold and spacing that sets a floor of roughly 70ms per character, and that's what caps it.
+
+| Target | Reported |
+|---|---|
+| 130 | 137 |
+| 140 | 140 |
+| 150 | 150 |
+| 180 | 161 |
+| 200 | 162 |
+
+Past about 160 the target stops mattering, because the clamps decide the speed at that point.
+
+If you want to go higher you have to change whatever is creating the floor:
+
+- **Lower `HOLD_MEAN`.** 55ms is comfortable. 40 or 35 is where it starts feeling fast but still plausible. Below 30 and it stops being human.
+- **Lower the `Math.max` clamps.** The `Math.max(25, ...)` on hold duration and `Math.max(8, ...)` on spacing are what set the real floor.
+- **Lower `HOLD_SD`.** Less variance means tighter runs that go slightly faster on average, but this is the one that gets flagged fastest.
+
+## What I actually got when I pushed it
+
+Here's the real data from a week of testing on my own account, ending the way you'd expect.
+
+| Config | Target | Reported | Result |
+|---|---|---|---|
+| 55/12, no errors | 200 | 162 | passed |
+| 42/12, no errors | 200 | 184 | passed |
+| 25/10, no errors | 200 | - | **flagged** |
+| 38/22, no errors | 220 | 204 | passed |
+| 30/28, no errors | 240 | 190 | passed |
+| 34/18, no errors | 260 | 215 | passed |
+| 33/17, no errors | 260 | 218 | **flagged** |
+| 34/18, no errors | 130 | 130 | **flagged twice** |
+| 34/18, gap clamp 6 | 280 | - | **flagged** |
+| **any config** | **any** | **-** | **account banned** |
+## Presets
+
+**Safe, probably won't get you banned:**
+
+```js
+const TARGET_WPM   = 130;
+const CALIBRATION  = 1.15;
+const ERROR_RATE   = 0.025;
+const THINK_CHANCE = 0.08;
+const HOLD_MEAN    = 50;
+const HOLD_SD      = 22;
+const PAUSE_MEAN   = 160;
+const PAUSE_SD     = 60;
