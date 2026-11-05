@@ -4,8 +4,17 @@ Tampermonkey auto-typing script for Monkeytype with human-like keystroke timing.
 Reads the active word on the page, types it, hits space, moves on. Toggle button in the bottom right or window.autoTyper.start(), .stop(), .toggle() from the console.
 ## Install
 
+**Method 1 (recommended):** Install directly from Greasyfork.
+
+1. Install [Tampermonkey](https://www.tampermonkey.net/) if you don't have it.
+2. Go to [greasyfork.org/en/scripts/603960-monkeytype-auto-typer](https://greasyfork.org/en/scripts/603960-monkeytype-auto-typer) and click "Install this script."
+3. Tampermonkey will open a confirmation tab. Click install.
+4. Open Monkeytype, click the test area once so the caret shows up, then click the yellow toggle in the bottom right to start.
+
+**Method 2:** Install manually from the repo.
+
 1. Install [Tampermonkey](https://www.tampermonkey.net/).
-2. Open the Tampermonkey dashboard, click "Create a new script," paste the contents, save.
+2. Open the Tampermonkey dashboard, click "Create a new script," paste the contents of `monkeytype-auto-typer.user.js`, save.
 3. Open Monkeytype, click the test area once so the caret shows up, then click the yellow toggle in the bottom right to start.
 
 The script starts typing the moment you toggle it on. There's no countdown, so make sure the test is ready before you click it.
