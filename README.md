@@ -90,3 +90,19 @@ const PAUSE_SD     = 60;
 ```
 Keep in mind the fast config is what got me 215 after which I got banned when trying to push further. 
 That doesn't necessarily mean it's the limit, you could probably get an even higher score without getting detected if you mess around enough with the parameters, but I'm too lazy for that.
+## Install
+
+1. Install Tampermonkey.
+2. Create a new script, paste the contents, save.
+3. Open Monkeytype, click the test area once so the caret shows up, toggle on.
+
+If nothing types, check the console for `[auto-typer]` errors. Most of the time it's the `#wordsInput` selector. You can check with `document.querySelector('#wordsInput')`.
+## Known issues and limitations
+
+- The script begins typing the moment it is toggled on. There is no countdown or delay.
+- Changing parameters (WPM, hold times, error rates, etc.) requires editing the script in Tampermonkey and saving. You have to re-paste the values into the text file every time. I might add a proper UI in the future.
+- Quote and custom text modes aren't handled specially.
+- Punctuation mode is untested.
+- The toggle button remounts every 500ms and can shift slightly after navigation.
+- The target WPM interacts with detection in ways that aren't obvious from the code. At `HOLD_MEAN = 34`, `HOLD_SD = 18`, target 260 passes and target 130 flags, with no other differences.
+- Lowering the spacing clamp from 8 to 6 flagged at target 280. The pinned-gap regime seems to be what's passing at high targets.
