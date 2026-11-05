@@ -65,3 +65,28 @@ const HOLD_MEAN    = 50;
 const HOLD_SD      = 22;
 const PAUSE_MEAN   = 160;
 const PAUSE_SD     = 60;
+```
+**Risky, probably fine for a short while:**
+```js
+const TARGET_WPM   = 160;
+const CALIBRATION  = 1.15;
+const ERROR_RATE   = 0.02;
+const THINK_CHANCE = 0.06;
+const HOLD_MEAN    = 42;
+const HOLD_SD      = 20;
+const PAUSE_MEAN   = 160;
+const PAUSE_SD     = 60;
+```
+**Fast, will probably get you banned eventually:**
+```js
+const TARGET_WPM   = 260;
+const CALIBRATION  = 1.15;
+const ERROR_RATE   = 0;
+const THINK_CHANCE = 0.04;
+const HOLD_MEAN    = 34;
+const HOLD_SD      = 18;
+const PAUSE_MEAN   = 160;
+const PAUSE_SD     = 60;
+```
+Keep in mind the fast config is what got me 215 after which I got banned when trying to push further. 
+That doesn't necessarily mean it's the limit, you could probably get an even higher score without getting detected if you mess around enough with the parameters, but I'm too lazy for that.
