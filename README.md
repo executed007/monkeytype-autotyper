@@ -99,13 +99,6 @@ const PAUSE_SD     = 60;
 ```
 Keep in mind the fast config is what got me 215 after which I got banned when trying to push further. 
 That doesn't necessarily mean it's the limit, you could probably get an even higher score without getting detected if you mess around enough with the parameters, but I'm too lazy for that.
-## Install
-
-1. Install Tampermonkey.
-2. Create a new script, paste the contents, save.
-3. Open Monkeytype, click the test area once so the caret shows up, toggle on.
-
-If nothing types, check the console for `[auto-typer]` errors. Most of the time it's the `#wordsInput` selector. You can check with `document.querySelector('#wordsInput')`.
 ## Known issues and limitations
 
 - The script begins typing the moment it is toggled on. There is no countdown or delay.
